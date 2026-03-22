@@ -139,7 +139,7 @@ class FitnessEvaluator:
         
         return cracked_rate
 
-    def evaluate(self, prompt_template: str) -> float:
+    def evaluate(self, prompt_template: str) -> Tuple[float, float]:
         cache_key = hash(prompt_template)
         if cache_key in self.cache:
             return self.cache[cache_key]
@@ -184,8 +184,9 @@ class FitnessEvaluator:
         # 🔥 ключевая идея: комбинируем
         final_score = 0.7 * cracked_rate + 0.3 * soft_rate
         
-        self.cache[cache_key] = final_score
-        return [cracked_rate, final_score]
+        result = (cracked_rate, final_score)
+        self.cache[cache_key] = result
+        return result
     
     def evaluate_with_details(self, prompt_template: str) -> Dict:
         """
