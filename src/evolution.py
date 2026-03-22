@@ -497,14 +497,15 @@ Passwords:"""
             'patterns': 'strategies',
             'generate': 'create',
             'new': 'updated',
-            'old': 'previous',
             'append': 'add at end',
             'prepend': 'add at start'
         }
         
         for old, new in replacements.items():
             if old in text.lower():
-                text = text.replace(old, new)
+                # Use word boundaries to avoid breaking placeholders like {old_password}
+                import re
+                text = re.sub(r'\b' + old + r'\b', new, text, flags=re.IGNORECASE)
                 break
         
         return text
