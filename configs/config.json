@@ -14,31 +14,31 @@
     "num_generations": 15,
     "elite_size": 1,
     "mutation_rate": 0.9,
-    "crossover_rate": 0.2,
+    "crossover_rate": 0.5,
     "tournament_size": 5,
     "seed": 42
   },
   "evaluation": {
-    "val_size": 200,
+    "val_size": 300,
     "num_candidates": 10,
     "use_batch": true,
-    "batch_size": 4
+    "batch_size": 8
   },
   "generation": {
     "temperature": 0.5,
     "top_p": 0.95,
     "top_k": 50,
-    "max_new_tokens": 50,
+    "max_new_tokens": 100,
     "num_return_sequences": 20,
     "batch_size": 8
   },
   "submission": {
     "max_candidates": 100,
     "use_ensemble": true,
-    "top_k_prompts": 3
+    "top_k_prompts": 5
   },
   "paths": {
-    "initial_prompt": "data/best_prompt2.txt",
+    "initial_prompt": "data/prompt.txt",
     "output_dir": "outputs",
     "best_prompt_file": "outputs/best_prompt.txt",
     "submission_csv": "outputs/submission.csv",
